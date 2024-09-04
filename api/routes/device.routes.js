@@ -5,6 +5,7 @@ const deviceController = require("../controllers/device.controller");
 router.get("/vendors", auth, deviceController.getVendors);
 router.get("/vendor-templates", auth, deviceController.getAvailableTemplates);
 router.post("/", auth, deviceController.addDevice);
+router.post("/:device_address/assign", auth, deviceController.assignDevice);
 router.get("/domains/:domainUuid", auth, deviceController.getDevices);
 router.get("/:deviceUuid", auth, deviceController.getDevice);
 router.put("/:deviceUuid", auth, deviceController.updateDevice);

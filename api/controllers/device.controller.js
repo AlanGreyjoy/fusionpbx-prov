@@ -60,3 +60,11 @@ module.exports.deleteDevice = async (req, res) => {
 
   return res.status(200).send({ message: "Device deleted" });
 };
+
+module.exports.assignDevice = async (req, res) => {
+  const device = req.body;
+
+  await deviceService.assignDeviceToUser(device);
+
+  return res.status(200).send({ message: "Device assigned" });
+};
