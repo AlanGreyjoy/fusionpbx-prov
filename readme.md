@@ -6,6 +6,10 @@ FusionPBX-PROV is not affiliated in anyway with the fantastic FusionPBX project 
 
 There is no support for this project and there are no modifications to and part of the core PBX system. The core PBX system will not be used in this project.
 
+### Where is the meat?
+
+The meat of this project addition is in ./api. This API server is and Express/Node.js server. It uses Sequelize ORM to interact with the database. The database is a PostgreSQL database. The database schema is in ./api/models. The database schema is a direct copy of the FusionPBX database schema. The database schema is not modified in any way.
+
 ---
 
 ## What is [FusionPBX](https://www.fusionpbx.com/)?
