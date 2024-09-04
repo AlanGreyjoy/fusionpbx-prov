@@ -2,7 +2,7 @@
 
 ## 🔔🔔🔔🔔 IMPORTANT 🔔🔔🔔🔔
 
-FusionPBX-PROV is not affiliated in anyway with the fantastic FusionPBX project and it's team members.
+FusionPBX-PROV is not affiliated in anyway with the fantastic FusionPBX project and it's team members. This is a custom fork.
 
 This project is to purely highjack the provisioning system of FusionPBX and make it compatible with other systems.
 
