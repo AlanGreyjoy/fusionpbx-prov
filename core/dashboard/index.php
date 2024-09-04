@@ -249,6 +249,9 @@ div.hud_content {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: start;
+	-webkit-transition: .4s;
+	-moz-transition: .4s;
+	transition: .4s;
 }
 
 div.hud_chart {
@@ -325,6 +328,9 @@ foreach ($dashboard as $row) {
 		echo "#".$dashboard_name." .hud_content {\n";
 		echo "	align-content: center;\n";
 		echo "}\n";
+		echo "#".$dashboard_name." .hud_chart {\n";
+		echo "	padding-top: 0;\n";
+		echo "}\n";
 	}
 	if ($row['dashboard_path'] == "dashboard/icon") {
 		echo "#".$dashboard_name." div.hud_content,\n";
@@ -362,6 +368,10 @@ foreach ($dashboard as $row) {
 			echo "	height: 300.5px;\n";
 			echo "}\n";
 			break;
+		default: //if empty
+			echo "#".$dashboard_name." .hud_content {\n";
+			echo "	height: 195px;\n";
+			echo "}\n";
 	}
 
 }
@@ -662,4 +672,3 @@ function toggle_grid_row_end_all() {
 	require_once "resources/footer.php";
 
 ?>
-
