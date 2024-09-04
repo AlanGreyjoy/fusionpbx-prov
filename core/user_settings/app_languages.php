@@ -2523,7 +2523,10 @@ $text['label-no_answer']['fr-ca'] = "Pas de réponse";
 $text['label-no_answer']['fr-fr'] = "Pas de réponse";
 $text['label-no_answer']['he-il'] = "אין תשובה";
 $text['label-no_answer']['it-it'] = "Nessuna risposta";
+<<<<<<< HEAD
 $text['label-no_answer']['ka-ge'] = "უპასუხო";
+=======
+>>>>>>> 5.2
 $text['label-no_answer']['nl-nl'] = "Geen antwoord";
 $text['label-no_answer']['pl-pl'] = "Brak odpowiedzi";
 $text['label-no_answer']['pt-br'] = "Sem resposta";
@@ -2531,7 +2534,10 @@ $text['label-no_answer']['pt-pt'] = "Sem resposta";
 $text['label-no_answer']['ro-ro'] = "Nici un raspuns";
 $text['label-no_answer']['ru-ru'] = "Нет ответа";
 $text['label-no_answer']['sv-se'] = "Inget svar";
+<<<<<<< HEAD
 $text['label-no_answer']['tr-tr'] = "Cevapsız";
+=======
+>>>>>>> 5.2
 $text['label-no_answer']['uk-ua'] = "Без відповіді";
 $text['label-no_answer']['zh-cn'] = "没有答案";
 $text['label-no_answer']['ja-jp'] = "答えはありません";

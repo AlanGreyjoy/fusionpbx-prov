@@ -9,4 +9,6 @@ secure/*.sqlite
 
 *.php~
 
+.env
+
 app/yealink/resources/firmware/*

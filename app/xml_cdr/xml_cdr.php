@@ -986,7 +986,11 @@
 						$content .= "	<td class='middle center hide-md-dn' ".($title ?? '').">".($value ?? '')."</td>\n";
 					}
 				//duration
+<<<<<<< HEAD
 					if ($permission['xml_cdr_duration']) {
+=======
+					if (permission_exists('xml_cdr_duration')) {
+>>>>>>> 5.2
 						$content .= "	<td class='middle center hide-sm-dn'>".gmdate("G:i:s", $duration)."</td>\n";
 					}
 				//call result/status

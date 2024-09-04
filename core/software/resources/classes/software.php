@@ -12,7 +12,11 @@ if (!class_exists('software')) {
 		 * version
 		 */
 		public static function version() {
+<<<<<<< HEAD
 			return '5.3.2';
+=======
+			return '5.2.4';
+>>>>>>> 5.2
 		}
 
 		/**

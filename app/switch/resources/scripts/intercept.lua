@@ -391,3 +391,8 @@
 		--api = freeswitch.API();
 		--result = api:executeString(cmd);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5.2

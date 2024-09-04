@@ -399,6 +399,7 @@
 		end
 	end
 
+<<<<<<< HEAD
 --fax to email
 	cmd = quote(shell_esc(php_dir).."/"..shell_esc(php_bin)).." "..quote(shell_esc(document_root).."/secure/fax_to_email.php").." ";
 	cmd = cmd .. "email="..quote(shell_esc(fax_email)).." ";
@@ -422,6 +423,8 @@
 	freeswitch.consoleLog("notice", "[fax] command: " .. cmd .. "\n");
 	os.execute(cmd);
 
+=======
+>>>>>>> 5.2
 --add to the fax queue when the fax_forward_number is set
 	if (fax_forward_number ~= nil) then
 		sql = "insert into v_fax_queue ";

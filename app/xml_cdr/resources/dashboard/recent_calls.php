@@ -136,6 +136,7 @@
 		</script>
 		<?php
 	}
+<<<<<<< HEAD
 	if (!isset($dashboard_chart_type) || $dashboard_chart_type == "number") {
 		echo "<span class='hud_stat'>".$num_rows."</span>";
 	}
@@ -227,4 +228,84 @@
 	}
 	echo "</div>\n";
 
+=======
+	echo "<th class='hud_heading' width='100%'>".$text['label-cid_number']."</th>\n";
+	echo "<th class='hud_heading'>".$text['label-date_time']."</th>\n";
+	echo "</tr>\n";
+
+	if ($num_rows > 0) {
+		$theme_cdr_images_exist = (
+			file_exists($theme_image_path."icon_cdr_inbound_answered.png") &&
+			file_exists($theme_image_path."icon_cdr_inbound_voicemail.png") &&
+			file_exists($theme_image_path."icon_cdr_inbound_cancelled.png") &&
+			file_exists($theme_image_path."icon_cdr_inbound_failed.png") &&
+			file_exists($theme_image_path."icon_cdr_outbound_answered.png") &&
+			file_exists($theme_image_path."icon_cdr_outbound_cancelled.png") &&
+			file_exists($theme_image_path."icon_cdr_outbound_failed.png") &&
+			file_exists($theme_image_path."icon_cdr_local_answered.png") &&
+			file_exists($theme_image_path."icon_cdr_local_voicemail.png") &&
+			file_exists($theme_image_path."icon_cdr_local_cancelled.png") &&
+			file_exists($theme_image_path."icon_cdr_local_failed.png")
+			) ? true : false;
+
+		foreach ($result as $index => $row) {
+			$start_date_time = str_replace('/0','/', ltrim($row['start_date_time'], '0'));
+			if (!empty($_SESSION['domain']['time_format']) && $_SESSION['domain']['time_format']['text'] == '12h') {
+				$start_date_time = str_replace(' 0',' ', $start_date_time);
+			}
+
+			//determine name
+				$cdr_name = ($row['direction'] == 'inbound' || ($row['direction'] == 'local' && !empty($assigned_extensions) && is_array($assigned_extensions) && in_array($row['destination_number'], $assigned_extensions))) ? $row['caller_id_name'] : $row['destination_number'];
+			//determine number to display
+				if ($row['direction'] == 'inbound' || ($row['direction'] == 'local' && !empty($assigned_extensions) && is_array($assigned_extensions) && in_array($row['destination_number'], $assigned_extensions))) {
+					$cdr_number = (is_numeric($row['caller_id_number'])) ? format_phone($row['caller_id_number']) : $row['caller_id_number'];
+					$dest = $row['caller_id_number'];
+				}
+				else if ($row['direction'] == 'outbound' || ($row['direction'] == 'local' && !empty($assigned_extensions) && is_array($assigned_extensions) && in_array($row['caller_id_number'], $assigned_extensions))) {
+					$cdr_number = (is_numeric($row['destination_number'])) ? format_phone($row['destination_number']) : $row['destination_number'];
+					$dest = $row['destination_number'];
+				}
+			//set click-to-call variables
+				if (permission_exists('click_to_call_call')) {
+					$tr_link = "onclick=\"send_cmd('".PROJECT_PATH."/app/click_to_call/click_to_call.php".
+						"?src_cid_name=".urlencode($cdr_name ?? '').
+						"&src_cid_number=".urlencode($cdr_number ?? '').
+						"&dest_cid_name=".urlencode($_SESSION['user']['extension'][0]['outbound_caller_id_name'] ?? '').
+						"&dest_cid_number=".urlencode($_SESSION['user']['extension'][0]['outbound_caller_id_number'] ?? '').
+						"&src=".urlencode($_SESSION['user']['extension'][0]['user'] ?? '').
+						"&dest=".urlencode($dest ?? '').
+						"&rec=".(isset($_SESSION['click_to_call']['record']['boolean']) ? $_SESSION['click_to_call']['record']['boolean'] : "false").
+						"&ringback=".(isset($_SESSION['click_to_call']['ringback']['text']) ? $_SESSION['click_to_call']['ringback']['text'] : "us-ring").
+						"&auto_answer=".(isset($_SESSION['click_to_call']['auto_answer']['boolean']) ? $_SESSION['click_to_call']['auto_answer']['boolean'] : "true").
+						"');\" ".
+						"style='cursor: pointer;'";
+				}
+			echo "<tr ".$tr_link.">\n";
+			//determine call result and appropriate icon
+				echo "<td valign='middle' class='".$row_style[$c]."' style='cursor: help; padding: 0 0 0 6px;'>\n";
+				if ($theme_cdr_images_exist) {
+					$call_result = $row['status'];
+					if (isset($row['direction'])) {
+						echo "<img src='".PROJECT_PATH."/themes/".$_SESSION['domain']['template']['name']."/images/icon_cdr_".$row['direction']."_".$call_result.".png' width='16' style='border: none;' title='".$text['label-'.$row['direction']].": ".$text['label-'.$call_result]."'>\n";
+					}
+				}
+				echo "</td>\n";
+				echo "<td valign='top' class='".$row_style[$c]." hud_text' nowrap='nowrap'><a href='javascript:void(0);' ".(!empty($cdr_name) ? "title=\"".$cdr_name."\"" : null).">".($cdr_number ?? '')."</a></td>\n";
+				echo "<td valign='top' class='".$row_style[$c]." hud_text' nowrap='nowrap'>".$start_date_time."</td>\n";
+			echo "</tr>\n";
+
+			unset($cdr_name, $cdr_number);
+			$c = ($c) ? 0 : 1;
+		}
+	}
+	unset($sql, $parameters, $result, $num_rows, $index, $row);
+
+	echo "</table>\n";
+	echo "<span style='display: block; margin: 6px 0 7px 0;'><a href='".PROJECT_PATH."/app/xml_cdr/xml_cdr.php'>".$text['label-view_all']."</a></span>\n";
+	echo "</div>";
+
+	echo "<span class='hud_expander' onclick=\"$('#hud_recent_calls_details').slideToggle('fast');\"><span class='fas fa-ellipsis-h'></span></span>";
+	echo "</div>\n";
+
+>>>>>>> 5.2
 ?>

@@ -1174,6 +1174,7 @@
 			$this->message_saved();
 
 			//set source folder path
+<<<<<<< HEAD
 			$path = realpath($this->settings->get('switch','voicemail','/var/lib/freeswitch/storage/voicemail').'/default/'.$domain_name).'/'.$this->voicemail_id;
 
 			//prepare base64 content from db, if enabled
@@ -1299,6 +1300,12 @@
 
 			//prepare base64 content from db, if enabled
 			if ($this->settings->get('voicemail','storage_type','') == 'base64') {
+=======
+			$path = ($_SESSION['switch']['voicemail']['dir'] ?? $_SESSION['switch']['voicemail']).'/default/'.$_SESSION['domain_name'].'/'.$this->voicemail_id;
+
+			//prepare base64 content from db, if enabled
+			if ((!empty($_SESSION['voicemail']['storage_type']['text']) && $_SESSION['voicemail']['storage_type']['text'] == 'base64') || (!empty($_SESSION['voicemail']['storage_type']) && $_SESSION['voicemail']['storage_type'] == 'base64')) {
+>>>>>>> 5.2
 				$sql = "select message_base64 ";
 				$sql .= "from ";
 				$sql .= "v_voicemail_messages as m, ";
@@ -1386,7 +1393,11 @@
 			fpassthru($fd);
 
 			//if base64, remove temp file
+<<<<<<< HEAD
 			if ($this->settings->get('voicemail','storage_type','') == 'base64') {
+=======
+			if ((!empty($_SESSION['voicemail']['storage_type']['text']) && $_SESSION['voicemail']['storage_type']['text'] == 'base64') || (!empty($_SESSION['voicemail']['storage_type']) && $_SESSION['voicemail']['storage_type'] == 'base64')) {
+>>>>>>> 5.2
 				@unlink($path.'/msg_'.$this->voicemail_message_uuid.'.'.$file_ext);
 			}
 

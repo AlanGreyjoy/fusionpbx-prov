@@ -85,6 +85,7 @@
         <action function="play-file" data="voicemail/vm-inga.wav"/> 
         <action function="play-file" data="voicemail/vm-meddelanden.wav"/>
       </match>
+<<<<<<< HEAD
     </input>
     <input pattern="^(\d+):(.*)$">
       <match>
@@ -107,6 +108,8 @@
         <action function="play-file" data="voicemail/vm-inga.wav"/> 
         <action function="play-file" data="voicemail/vm-meddelanden.wav"/>
       </match>
+=======
+>>>>>>> 5.2
     </input>
     <input pattern="^(\d+):(.*)$">
       <match>

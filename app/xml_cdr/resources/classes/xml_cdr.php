@@ -723,7 +723,11 @@ if (!class_exists('xml_cdr')) {
 
 					//voicemail message success
 						if (!empty($xml->variables->voicemail_answer_stamp) && $xml->variables->voicemail_message_seconds > 0){
+<<<<<<< HEAD
 							$this->array[$key][0]['voicemail_message'] = "true";
+=======
+							$this->array[$key]['voicemail_message'] = "true";
+>>>>>>> 5.2
 						}
 						else { //if ($xml->variables->voicemail_action == "save") {
 							$this->array[$key][0]['voicemail_message'] = "false";
@@ -1298,7 +1302,11 @@ if (!class_exists('xml_cdr')) {
 					}
 
 					//voicemails
+<<<<<<< HEAD
 					if (!empty($app['application']) && $app['application'] == 'voicemails') {
+=======
+					if ($app['application'] == 'voicemails') {
+>>>>>>> 5.2
 						$app['status'] = 'voicemail';
 					}
 
@@ -2193,4 +2201,3 @@ if (!class_exists('xml_cdr')) {
 }
 
 ?>
-

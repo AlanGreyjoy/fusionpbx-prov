@@ -140,11 +140,18 @@ local sql = "SELECT count(domain_setting_value) ";
 sql = sql .. "AS total ";
 sql = sql .. "FROM v_domain_settings ";
 sql = sql .. "WHERE domain_uuid = :domain_uuid ";
+<<<<<<< HEAD
 sql = sql .. "AND domain_setting_category = :category ";
 sql = sql .. "AND domain_setting_subcategory = :email_address ";
 sql = sql .. "AND domain_setting_enabled = :status ";
 
 local params = {domain_uuid = domain_uuid, category = 'emergency', email_address = 'email_address', status = 't'}
+=======
+sql = sql .. "AND domain_setting_subcategory = :emergency_email_address ";
+sql = sql .. "AND domain_setting_enabled = :status ";
+
+local params = {domain_uuid = domain_uuid, emergency_email_address = 'emergency_email_address', status = 't'}
+>>>>>>> 5.2
 
 dbh:query(sql, params, function(result)
 	total = result.total;
@@ -154,10 +161,17 @@ dbh:query(sql, params, function(result)
 		local sql = "SELECT default_setting_value ";
 			sql = sql .. "FROM v_default_settings ";
  			sql = sql .. "WHERE default_setting_category = :category ";
+<<<<<<< HEAD
 			sql = sql .. "AND default_setting_subcategory = :email_address ";
 			sql = sql .. "AND default_setting_enabled = :status ";
 			sql = sql .. "LIMIT 5 ";
 		local params = {category = 'emergency', email_address = 'email_address', status = 't'}
+=======
+			sql = sql .. "AND default_setting_subcategory = :emergency_email_address ";
+			sql = sql .. "AND default_setting_enabled = :status ";
+			sql = sql .. "LIMIT 5 ";
+		local params = {category = 'dialplan', emergency_email_address = 'emergency_email_address', status = 't'}
+>>>>>>> 5.2
 		dbh:query(sql, params, function(result)
 			for key,row in pairs(result) do
 				table.insert(to, row);
@@ -174,10 +188,16 @@ dbh:query(sql, params, function(result)
 		local   sql = "SELECT domain_setting_value ";
 			sql = sql .. "FROM v_domain_settings ";
 			sql = sql .. "WHERE domain_uuid = :domain_uuid ";
+<<<<<<< HEAD
 			sql = sql .. "AND domain_setting_category = :category ";
 			sql = sql .. "AND domain_setting_subcategory = :email_address ";
 			sql = sql .. "AND domain_setting_enabled = :status ";
 		local params = {domain_uuid = domain_uuid, category = 'emergency', email_address = 'email_address', status = 't'}
+=======
+			sql = sql .. "AND domain_setting_subcategory = :emergency_email_address ";
+			sql = sql .. "AND domain_setting_enabled = :status ";
+		local params = {domain_uuid = domain_uuid, emergency_email_address = 'emergency_email_address', status = 't'}
+>>>>>>> 5.2
 		dbh:query(sql, params, function(result)
 			for key,row in pairs(result) do
 				table.insert(to, row);
@@ -258,7 +278,13 @@ local params = {emergency_log_uuid = call_uuid, domain_uuid = domain_uuid, exten
 if (debug["sql"]) then
 	freeswitch.consoleLog("info", "[emergency] SQL: " .. sql .. "\n");
 end
+<<<<<<< HEAD
 
 dbh:query(sql, params);
 dbh:release();
 
+=======
+
+dbh:query(sql, params);
+dbh:release();
+>>>>>>> 5.2
