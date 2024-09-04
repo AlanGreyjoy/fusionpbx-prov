@@ -46,6 +46,8 @@ No.
 
 ### Why did you fork FusionPBX and not just create a separate project/microservice?
 
+---
+
 Well, we _may_ need to modify one core area of FusionPBX. This would be ./apps/provision directory. I don't think we will need too though. We will see.
 
 It also makes it easier to integrate with FusionPBX and it's insane nginx configuration.
